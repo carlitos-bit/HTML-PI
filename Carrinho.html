@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="imagem">
+                <img style="width: 100px; height: 100px" src="/Imagens/Anjos de 4 patas - logos.png" alt="logo">
+            </div>
+            <div class="botoes-container">
+                <button><a href="navegação.html">INÍCIO</a></button>
+                <button><a href="Produtos.html" target="_blank">PRODUTOS</a></button>
+                <button><a href="Adoçoes.html" target="_blank">ADOÇÃO</a></button>
+                <button><a href="sobre.html" target="_blank">SOBRE NÓS</a></button>
+            </div>
+            <section class="carrinho">
+                <button><img class="imgcarrinho" src="/Imagens/carrinho_compra.png" alt="carrinho de compra">
+                <a href="Carrinho.html">Carrinho</a></button>
+            </section>
+        </nav>
+    </header>
+
+  <main>
+    <section id="cart">
+      <ul id="cart-items">
+        <!-- Produtos aparecem aqui via JS -->
+      </ul>
+      <div class="cart-summary">
+        <p>Total: <span id="total">R$ 0,00</span></p>
+        <button id="checkout">Finalizar Compra</button>
+      </div>
+    </section>
+  </main>
+ <footer>
+        <div class="redes">
+            <a href="https://www.instagram.com/anjosde4_.patas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                <img class="insta" src="/Imagens/logo do instagram.png" alt="">
+            </a>
+        </div>
+
+        <p class="rodape">
+            Copyright &copy; 2025 - Todos os Direitos Reservados - Anjos de 4 Patas
+        </p>
+
+        <div class="logos">
+            <img class="logo2" src="/Imagens/1200x630wa-Photoroom.png" alt="">
+            <img class="logo1" src="/Imagens/images-Photoroom.png" alt="">
+        </div>
+    </footer> 
+  <script src="carrinho.js"></script>
+  <script>
+// Recupera os produtos salvos no localStorage
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const totalElement = document.getElementById("total");
+  cartItemsContainer.innerHTML = "";
+
+  let total = 0;
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remover";
+    removeBtn.addEventListener("click", () => {
+      removeFromCart(item.id);
+    });
+
+    li.appendChild(removeBtn);
+    cartItemsContainer.appendChild(li);
+
+    total += item.price;
+  });
+
+  totalElement.textContent = `R$ ${total.toFixed(2)}`;
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+document.getElementById("checkout").addEventListener("click", () => {
+  if(cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+  alert("Compra finalizada com sucesso!");
+  cart = [];
+  localStorage.removeItem("cart"); // limpa do navegador
+  renderCart();
+});
+
+renderCart();
+</script>
+
+
+</body>
+
+</html>
