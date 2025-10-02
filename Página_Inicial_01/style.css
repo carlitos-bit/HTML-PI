@@ -1,0 +1,246 @@
+@charset "GTU-8";
+
+
+    body {
+  background-color: #c2e4faab;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: #fff;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0px 8px 9px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* Faz a logo e os botões ficarem na mesma linha */
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  /* espaço entre logo e botões */
+}
+
+.imagem img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.botoes-container {
+  display: flex;
+  gap: 20px;
+}
+
+.botoes-container button {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.botoes-container button:hover {
+  background-color: #ffffff;
+}
+
+.botoes-container a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* ===== MAIN ===== */
+main {
+  padding-top: 120px; /* espaço para o header fixo */
+}
+
+/* ===== SLIDER ===== */
+.slider {
+  width: 100%;
+  max-width: 100%;
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+/* Oculta os inputs de controle */
+.slider input {
+  display: none;
+}
+
+.slider{
+#slide1:checked ~ .slides { transform: translateX(0%); }
+#slide2:checked ~ .slides { transform: translateX(-100%); }
+#slide3:checked ~ .slides { transform: translateX(-200%); }
+}
+.slides {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: transform 0.8s ease;
+    margin: 5px 20px 5px 20px;
+}
+
+.slide {
+  width: 90%;
+  flex: 1 0 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* ===== CONTROLES DO SLIDER ===== */
+#seta {
+  display: none;
+}
+
+.setas label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  background: rgba(0, 0, 0, 0.185);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.setas label:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}
+
+/* ===== INTRODUÇÃO ===== */
+.introducao {
+  text-align: justify;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.introducao h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00365ab2;
+}
+
+.introducao p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* ===== Adoção ===== */
+.adocao {
+  text-align: justify;
+  padding: 50px 20px;
+   margin: auto;
+   max-width: 900px;
+   background-color: white;
+   border-radius: 20px;
+}
+
+.adocao h2{
+font-size: 2rem;
+margin-bottom: 20px;
+color: #00365ab2;
+}
+
+.adocao button{
+  background-color: none;
+  border: none;
+  border-radius: 8px;
+}
+
+.adocao a{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #2c4252be;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* ==== div-main ==== */
+.div-main{
+  display: flex;
+    justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px; /* Espaçamento entre a coluna e a aside */
+}
+
+/* Coluna da introdução + adoção */
+.coluna-esquerda {
+  flex: 2; /* ocupa mais espaço */
+  display: flex;
+  flex-direction: column; /* empilha introdução e adoção */
+  gap: 20px;
+  background-color: #fff;
+  margin-left: 60px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+/* Aside na direita */
+.promocao {
+  flex: 1; /* pega o espaço restante */
+  max-width: 350px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 745px;
+  margin-right: 50px;
+}
+
+.promocao h3{
+font-size: 2rem;
+margin-bottom: 20px;
+color: #00365ab2;
+text-align: center;
+}
+
+h4 .valor{
+  font-family: cursive;
+}
+.promocao img {
+  width: 100%;
+  border-radius: 8px;
+}
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .botoes-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .slide img {
+    height: 250px;
+  }
+
+  .introducao h2 {
+    font-size: 1.5rem;
+  }
+}
